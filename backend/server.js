@@ -23,8 +23,8 @@ const corsOptions = {
  
 const app = express();
 app.use(cors(corsOptions))
-const PORT = process.env.port || 5000;
-const __dirname = path.resolve();
+const PORT = process.env.PORT || 5000;
+const __dirname = path.resolve()
 
 console.log("__dirname", __dirname)
 
@@ -35,21 +35,20 @@ app.use(passport.session());
 
 
 
-app.get("/", (req, res) => {
-  res.send("Server is Ready");
-});
+// app.get("/", (req, res) => {
+//   res.send("Server is Ready");
+// });
 
 app.use("/api/auth",authRoutes);
 app.use("/api/users", userRoute);
 app.use("/api/explore",exploreRoute);
 
 
-app.use(express.static(path.join(__dirname,"/frontend/dist")))
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.use("*",(req,res) =>{
-  res.sendFile(path.join(__dirname, "frontend","dist","index.html"))
-})
-
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 
 app.listen(PORT, () => {
