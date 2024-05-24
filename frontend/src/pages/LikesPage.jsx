@@ -43,30 +43,38 @@ const LikesPage = () => {
           </th>
         </tr>
       </thead>
-      <tbody>
-        {like.map((user, idx) => (
-          <tr className='bg-glass border-b' key={user.username}>
-            <td className='w-4 p-4'>
-              <div className='flex items-center'>
-                <span>{idx + 1}</span>
-              </div>
-            </td>
-            <th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap '>
-              <img className='w-10 h-10 rounded-full' src={user.avatarUrl} alt='User Avatar' />
-              <div className='ps-3'>
-                <div className='text-base font-semibold'>{user.username}</div>
-              </div>
-            </th>
-            <td className='px-6 py-4'>{formatDate(user.likedDate)}</td>
-            <td className='px-6 py-4'>
-              <div className='flex items-center'>
-                <FaHeart size={22} className='text-red-500 mx-2' />
-                Liked your profile
-              </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+    <tbody>
+    {Array.isArray(like) && like.length > 0 ? (
+      like.map((user, idx) => (
+        <tr className='bg-glass border-b' key={user.username}>
+          <td className='w-4 p-4'>
+            <div className='flex items-center'>
+              <span>{idx + 1}</span>
+            </div>
+          </td>
+          <th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap'>
+            <img className='w-10 h-10 rounded-full' src={user.avatarUrl} alt='User Avatar' />
+            <div className='ps-3'>
+              <div className='text-base font-semibold'>{user.username}</div>
+            </div>
+          </th>
+          <td className='px-6 py-4'>{formatDate(user.likedDate)}</td>
+          <td className='px-6 py-4'>
+            <div className='flex items-center'>
+              <FaHeart size={22} className='text-red-500 mx-2' />
+              Liked your profile
+            </div>
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="4" className='px-6 py-4 text-center'>
+          No likes found.
+        </td>
+      </tr>
+    )}
+  </tbody>
     </table>
   </div>
   );
