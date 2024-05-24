@@ -44,7 +44,7 @@ const LikesPage = () => {
         </tr>
       </thead>
       <tbody>
-        {likes.map((user, idx) => (
+        {like.map((user, idx) => (
           <tr className='bg-glass border-b' key={user.username}>
             <td className='w-4 p-4'>
               <div className='flex items-center'>
