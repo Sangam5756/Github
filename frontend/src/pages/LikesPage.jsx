@@ -21,7 +21,7 @@ const LikesPage = () => {
     }
     getlikes();
   },[])
-  console.log(likes)
+  
 
 
   return (
