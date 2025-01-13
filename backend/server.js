@@ -17,7 +17,7 @@ dotenv.config();
 
 
 const corsOptions = { 
-  origin:  ["http://localhost:5173", process.env.FRONTEND_URL, "https://petfriend5756.onrender.com"], // Allow requests from this origin
+  origin:  ["http://localhost:5173", process.env.FRONTEND_URL, "https://gitcode.sangammundhe.site"], // Allow requests from this origin
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
  
