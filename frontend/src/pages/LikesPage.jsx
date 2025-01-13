@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import toast from "react-hot-toast"
+import { backendurl } from "../utils/constant";
 
 const LikesPage = () => {
   const [like, setLike] = useState([]);
@@ -8,7 +9,7 @@ const LikesPage = () => {
   useEffect(() =>{
     const getlikes  = async () =>{
       try {
-        const res  = await fetch("/api/users/likes", {credentials : "include"})
+        const res  = await fetch(backendurl+"/api/users/likes", {credentials : "include"})
         const data = res.json();
         if(data.error) throw new Error(data.error);
         setLike(data.likeBy);

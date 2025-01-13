@@ -5,6 +5,7 @@ import ProfileInfo from "../components/ProfileInfo";
 import Repos from "../components/Repos";
 import Spinner from "../components/Spinner";
 import toast from "react-hot-toast";
+import { backendurl } from "../utils/constant";
 
 const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -19,7 +20,7 @@ const HomePage = () => {
     async (username = "Sangam5756") => {
       try {
         const res = await fetch(
-          `/api/users/profile/${username}`
+          backendurl+`/api/users/profile/${username}`
         );
         const { repos, userProfile } = await res.json();
 

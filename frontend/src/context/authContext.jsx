@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { backendurl } from "../utils/constant";
 
 export const AuthContext = createContext();
 
@@ -15,7 +16,7 @@ export const AuthcontextProvide = ({ children }) => {
     const checkUserLoggedIn = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/auth/check", { credentials: "include" });
+        const res = await fetch(backendurl+"/api/auth/check", { credentials: "include" });
         const data = await res.json();
         setAuthUser(data.user);
       } catch (error) {

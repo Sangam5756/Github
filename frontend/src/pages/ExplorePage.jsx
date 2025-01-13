@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import Repos from "../components/Repos";
+import { backendurl } from "../utils/constant";
 
 const ExplorePage = () => {
   // https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc&per_page=10
@@ -14,7 +15,7 @@ const ExplorePage = () => {
     setRepos([]);
     try {
       const res = await fetch(
-        "/api/explore/repos/" + language
+        backendurl+"/api/explore/repos/" + language
       );
       const { repos } = await res.json();
 

@@ -1,6 +1,7 @@
 import toast from "react-hot-toast"
 import { FaHeart } from "react-icons/fa"
 import { AuthContext, useAuthContext } from "../context/authContext"
+import { backendurl } from "../utils/constant";
  
 export const LikeProfile = ({userProfile}) =>{
         const {authUser} = useAuthContext();
@@ -10,7 +11,7 @@ export const LikeProfile = ({userProfile}) =>{
         
         try {
 
-            const res = await fetch(`/api/users/like/${userProfile.login}`,{
+            const res = await fetch(backendurl+`/api/users/like/${userProfile.login}`,{
                 method:"POST",
                 credentials:"include",
 
