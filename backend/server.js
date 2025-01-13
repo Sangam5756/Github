@@ -17,7 +17,7 @@ dotenv.config();
 
 
 const corsOptions = { 
-  origin: 'http://localhost:3000', // Allow requests from this origin
+  origin:  ["http://localhost:5173", process.env.FRONTEND_URL, "https://petfriend5756.onrender.com"], // Allow requests from this origin
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
  
@@ -26,7 +26,7 @@ app.use(cors(corsOptions))
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve()
 
-console.log("__dirname", __dirname)
+// console.log("__dirname", __dirname)
 
 
 app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
@@ -35,20 +35,20 @@ app.use(passport.session());
 
 
 
-// app.get("/", (req, res) => {
-//   res.send("Server is Ready");
-// });
+app.get("/", (req, res) => {
+  res.send("Server is Ready");
+});
 
 app.use("/api/auth",authRoutes);
 app.use("/api/users", userRoute);
 app.use("/api/explore",exploreRoute);
 
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+// 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
 
 
 app.listen(PORT, () => {
